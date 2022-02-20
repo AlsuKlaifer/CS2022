@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CS2022.List
 {
-    internal class CustomList
+    public class CustomList
     {
         /// <summary>
         /// Ссылка на первый элемент связанного списка
@@ -39,6 +39,9 @@ namespace CS2022.List
             }
             headCopy.NextNode = newNode;
         }
+        /// <summary>
+        /// Добавление в начало
+        /// </summary>
         public void AddToHead(int a)
         {
             var newNode = new Node(a);
@@ -46,6 +49,9 @@ namespace CS2022.List
             head = newNode;
         }
 
+        /// <summary>
+        /// Добавление на опредленную позицию
+        /// </summary>
         public void Add(int a, int position)
         {
             if (position==1)
@@ -55,10 +61,10 @@ namespace CS2022.List
             }
 
             var headCopy = head;
-            for (int i =1; i<position - 2; i++)
+            for (int i =1; i<=position - 2; i++)
             {
                 if (headCopy == null)
-                    throw new Exception("Список недостаточной длины");
+                    throw new ArgumentOutOfRangeException("Список недостаточной длины");
                 headCopy = headCopy.NextNode;
             }
 
@@ -68,6 +74,55 @@ namespace CS2022.List
                 newNode.NextNode = headCopy.NextNode;
             headCopy.NextNode = newNode;
         }
+
+        /// <summary>
+        /// Удаление головного элемента
+        /// </summary>
+        public void DeleteHead()
+        {
+            if (head.NextNode == null)
+            {
+                Console.WriteLine("Список пуст");
+                return;
+            } 
+            head = head.NextNode;
+        }
+
+        /// <summary>
+        /// Удаление последнего элементв
+        /// </summary>
+        public void DeleteLast()
+        {
+            if (head.NextNode == null)
+            {
+                Console.WriteLine("Список пуст");
+                return;
+            }
+            var nodeCopy = head;
+            while(nodeCopy.NextNode.NextNode != null)
+            {
+                nodeCopy = nodeCopy.NextNode;
+            }
+            nodeCopy.NextNode = null;
+        }
+
+        public void Delete(int position)
+        {
+            if (position <= 0)
+                throw new Exception("Позиция предусматривает положительное число. Введите корректное значение");
+            if (position == 1)
+            {
+                DeleteHead();
+                return;
+            }
+            var nodeCopy = head;
+            for (int i = 1; i <= position - 2; i++)
+            {
+                nodeCopy = nodeCopy.NextNode;
+            }
+            nodeCopy.NextNode = nodeCopy.NextNode.NextNode;
+        }   
+
         public override string ToString()
         {
             var headCopy = head;
@@ -76,12 +131,17 @@ namespace CS2022.List
             {
                 return "Список пуст";
             }
-            while (headCopy.NextNode != null)
+            while (headCopy != null)
             {
                 result.Append(headCopy.InfField.ToString() + " ");
                 headCopy = (Node)headCopy.NextNode;
             }
             return result.ToString();
+        }
+
+        public void WriteToConsole()
+        {
+            Console.WriteLine(ToString());
         }
     }
 }
