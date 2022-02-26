@@ -9,5 +9,9 @@ using AISD;
 //var result2 = Couple.UniqNumCount(arr);
 
 //Homework 24.02.2022
-int[] a = new int[] {2, 1, 2, 3, 2, 2, 3, 10, 2, 2};
-ArraySearch.MajoritySearch(a);
+//int[] a = new int[] {2, 1, 2, 3, 2, 2, 3, 10, 2, 2};
+//ArraySearch.MajoritySearch(a);
+
+int[] arr = new int[] { 1, 2, 3 };
+var a = new ArraySearch();
+a.AllArrays(arr);
