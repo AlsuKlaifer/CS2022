@@ -18,6 +18,12 @@ namespace CS2022.List
         {
             head = new Node(a);
         }
+        
+        public CustomList(int[] array)
+        {
+            foreach(int el in array)
+                Add(el);
+        }
 
         /// <summary>
         /// Добавление по умолчанию в конец
@@ -121,7 +127,35 @@ namespace CS2022.List
                 nodeCopy = nodeCopy.NextNode;
             }
             nodeCopy.NextNode = nodeCopy.NextNode.NextNode;
-        }   
+        } 
+
+        public void DeleteAllValues(int value)
+        {
+            if (head == null)
+                return;
+            while ()
+                DeleteAllValuesFromSecondElement(value, headcopy);
+        }
+        private void DeleteAllValuesFromSecondElement(int value, Node headcopy)
+        {
+            if(headcopy.NextNode == null)
+        }
+
+
+        public int Length()
+        {
+            int length = 0;
+            if(head!= null)
+            {
+                var headcopy = head;
+                while (headcopy != null)
+                {
+                    length++;
+                    headcopy = headcopy.NextNode;
+                }
+            }
+            return length;
+        }
 
         public override string ToString()
         {
