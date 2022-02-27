@@ -112,6 +112,9 @@ namespace CS2022.List
             nodeCopy.NextNode = null;
         }
 
+        /// <summary>
+        /// Удаление элемента на определенной позиции
+        /// </summary>
         public void Delete(int position)
         {
             if (position <= 0)
@@ -129,18 +132,64 @@ namespace CS2022.List
             nodeCopy.NextNode = nodeCopy.NextNode.NextNode;
         } 
 
-        public void DeleteAllValues(int value)
+        /// <summary>
+        /// Удаление предпоследнего элемента
+        /// </summary>
+        public void DeletePenult()
         {
-            if (head == null)
-                return;
-            while ()
-                DeleteAllValuesFromSecondElement(value, headcopy);
-        }
-        private void DeleteAllValuesFromSecondElement(int value, Node headcopy)
-        {
-            if(headcopy.NextNode == null)
+            var nodeCopy = head;
+            while (nodeCopy.NextNode.NextNode.NextNode != null)
+            {
+                nodeCopy = nodeCopy.NextNode;
+            }
+            nodeCopy.NextNode = nodeCopy.NextNode.NextNode;
         }
 
+        /// <summary>
+        /// Удаление числа
+        /// </summary>
+        public void DeleteNumber(int k)
+        {
+            var nodeCopy = head;
+            int i = 2;
+            while (nodeCopy.NextNode.InfField != k)
+            {
+                nodeCopy = nodeCopy.NextNode;
+                i++;
+            }
+            Delete(i);
+        }
+
+        /// <summary>
+        /// Возвращает сумму элементов списка
+        /// </summary>
+        public int Sum()
+        {
+            var headcopy = head;
+            int sum = 0;
+            while (headcopy != null)
+            {
+                sum += headcopy.InfField;
+                headcopy = headcopy.NextNode;
+            }
+            return sum;
+        }
+
+        /// <summary>
+        /// Вставляет число m до и после первого элемента, равного k
+        /// </summary>
+        public void PasteNumber(int k, int m)
+        {
+            var nodeCopy = head;
+            int i = 2;
+            while (nodeCopy.NextNode.InfField != k)
+            {
+                nodeCopy = nodeCopy.NextNode;
+                i++;
+            }
+            Add(m, i);
+            Add(m, i+2);
+        }
 
         public int Length()
         {

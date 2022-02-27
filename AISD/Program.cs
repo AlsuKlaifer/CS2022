@@ -12,6 +12,11 @@ using AISD;
 //int[] a = new int[] {2, 1, 2, 3, 2, 2, 3, 10, 2, 2};
 //ArraySearch.MajoritySearch(a);
 
-int[] arr = new int[] { 1, 2, 3 };
 var a = new ArraySearch();
-a.AllArrays(arr);
+int[] c2 = new int[] { 1, 2, 3 };
+AISD.Count.Recursion(c2, 0, c2.Length - 1);
+Console.ReadKey();
+
+//int[] arr = new int[] { 1, 2, 3 };
+
+//a.AllArrays(arr);
