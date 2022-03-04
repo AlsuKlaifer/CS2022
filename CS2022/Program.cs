@@ -30,3 +30,8 @@ list.WriteToConsole();
 Console.WriteLine(list.Sum());
 list.PasteNumber(11, 9);
 list.WriteToConsole();
+list.ChangeNodes();
+list.WriteToConsole();
+list.Add(5);
+list.ChangeNodes();
+list.WriteToConsole();

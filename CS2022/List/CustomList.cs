@@ -191,6 +191,32 @@ namespace CS2022.List
             Add(m, i+2);
         }
 
+        /// <summary>
+        /// Дз по АСД
+        /// Меняем местами каждые два соседних узла
+        /// </summary>
+        public void ChangeNodes()
+        {
+            var thirdnode = head.NextNode.NextNode;
+            var headcopy = head;
+            head = head.NextNode;
+            head.NextNode = headcopy;
+            while (thirdnode != null && thirdnode.NextNode != null)
+            {
+
+                headcopy.NextNode = thirdnode.NextNode;
+
+                headcopy = thirdnode;
+
+                var next = thirdnode.NextNode.NextNode;
+
+                thirdnode.NextNode.NextNode = thirdnode;
+
+                thirdnode = next;
+            }
+            headcopy.NextNode = thirdnode;
+        }
+
         public int Length()
         {
             int length = 0;
@@ -226,5 +252,7 @@ namespace CS2022.List
         {
             Console.WriteLine(ToString());
         }
+
+
     }
 }
