@@ -25,6 +25,9 @@ namespace AISD
             }
         }
 
+        /// <summary>
+        /// Считает размерность ступенчаого массива (равно количеству всех сочетаний) для 2 задания
+        /// </summary>
         public int CountArrays(int[] a)
         {
             int length = 1;
@@ -91,6 +94,9 @@ namespace AISD
             return result;
         }
 
+        /// <summary>
+        /// Перевод числа в массив
+        /// </summary>
         public static int[] ToArray(int a, int[] arr)
         {
             for(int i = arr.Length - 1; i >= 0; i--)
@@ -101,6 +107,9 @@ namespace AISD
             return arr;
         }
 
+        /// <summary>
+        /// Перевод массива в число
+        /// </summary>
         public static int ToInt(int[] arr)
         {
             int number = 0;
@@ -109,13 +118,9 @@ namespace AISD
             return number;
         }
 
-        public static bool Check(int[] a1, int b, int c)
-        {
-            if (ToInt(a1) + b == c)
-                return true;
-            else return false;
-        }
-
+        /// <summary>
+        /// Метод, проверяющий является ли "с" суммой "а" и "b"
+        /// </summary>
         public static bool CheckABC(int a, int b, int c)
         {
             int number = Convert.ToString(a).Length;
@@ -125,7 +130,7 @@ namespace AISD
 
             for (int i = 0; i < arraysOfA.Length; i++)
             {
-                if (Check(arraysOfA[i], b, c))
+                if (ToInt(arraysOfA[i]) + b == c)
                 {
                     Console.WriteLine($"YES {ToInt(arraysOfA[i])} {b}");
                     return true;

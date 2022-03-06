@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace CS2022.List
 {
-    public class Node
+    public class Node<T>
     {
         /// <summary>
         /// Информационное поле
         /// </summary>
-        public int InfField;
+        public T InfField;
         /// <summary>
         /// Ссылка на следующий элемент
         /// </summary>
-        public Node NextNode;
+        public Node<T> NextNode;
         /// <summary>
         /// Конструктор
         /// </summary>
-        public Node(int a)
+        public Node(T a)
         {
             InfField = a;
         }

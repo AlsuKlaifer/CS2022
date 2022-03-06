@@ -6,31 +6,34 @@ using System.Threading.Tasks;
 
 namespace CS2022.List
 {
-    public class CustomList
+    public class CustomList<T> where T: IComparable<T>
     {
         /// <summary>
         /// Ссылка на первый элемент связанного списка
         /// </summary>
-        private Node head;
+        private Node<T> head;
         public CustomList() { }
 
-        public CustomList(int a)
+        public CustomList(T a)
         {
-            head = new Node(a);
+            head = new Node<T>(a);
         }
         
-        public CustomList(int[] array)
+        public CustomList(T[] array)
         {
-            foreach(int el in array)
+            foreach (var el in array)
+            {
                 Add(el);
+            }
         }
 
         /// <summary>
         /// Добавление по умолчанию в конец
         /// </summary>
-        public void Add(int a)
+        public void Add(T a)
         {
-            var newNode = new Node(a);
+            var newNode = new Node<T>(a);
+
             if(head == null)
             {
                 head = newNode;
@@ -48,9 +51,9 @@ namespace CS2022.List
         /// <summary>
         /// Добавление в начало
         /// </summary>
-        public void AddToHead(int a)
+        public void AddToHead(T a)
         {
-            var newNode = new Node(a);
+            var newNode = new Node<T>(a);
             newNode.NextNode = head;
             head = newNode;
         }
@@ -58,7 +61,7 @@ namespace CS2022.List
         /// <summary>
         /// Добавление на опредленную позицию
         /// </summary>
-        public void Add(int a, int position)
+        public void Add(T a, int position)
         {
             if (position==1)
             {
@@ -74,7 +77,7 @@ namespace CS2022.List
                 headCopy = headCopy.NextNode;
             }
 
-            var newNode = new Node(a);
+            var newNode = new Node<T>(a);
             //если добавляем не в конец то к новому элементу записываем хвост
             if (headCopy.NextNode != null)
                 newNode.NextNode = headCopy.NextNode;
@@ -146,50 +149,93 @@ namespace CS2022.List
         }
 
         /// <summary>
-        /// Удаление числа
+        /// Удалить все вхождения какого-то значения
         /// </summary>
-        public void DeleteNumber(int k)
+        public void DeleteAllValues(T value)
         {
-            var nodeCopy = head;
-            int i = 2;
-            while (nodeCopy.NextNode.InfField != k)
-            {
-                nodeCopy = nodeCopy.NextNode;
-                i++;
-            }
-            Delete(i);
+            if (head == null)
+                return;
+            while (head != null && head.InfField.CompareTo(value) == 0)
+                DeleteHead();
+
+            if (head != null)
+                DelAllValFromSecondElem(value, head);
         }
+
+        private void DelAllValFromSecondElem(T value, Node<T> headCopy)
+        {
+            if (headCopy.NextNode == null)
+                return;
+
+            if (headCopy.NextNode.InfField.CompareTo(value) == 0)
+            {
+                DeleteSecondElement(headCopy);
+                DelAllValFromSecondElem(value, headCopy);
+            }
+            else
+            {
+                DelAllValFromSecondElem(value, headCopy.NextNode);
+            }
+        }
+
+        /// <summary>
+        /// Удаление второго элемента
+        /// </summary>
+        private void DeleteSecondElement(Node<T> headCopy)
+        {
+            if (headCopy == null || headCopy.NextNode == null)
+                throw new Exception("В методе DeleteSecondElement неверные входные данные");
+
+            headCopy.NextNode = headCopy.NextNode.NextNode;
+        }
+        #region Не работает для обобщенных типов
 
         /// <summary>
         /// Возвращает сумму элементов списка
         /// </summary>
-        public int Sum()
-        {
-            var headcopy = head;
-            int sum = 0;
-            while (headcopy != null)
-            {
-                sum += headcopy.InfField;
-                headcopy = headcopy.NextNode;
-            }
-            return sum;
-        }
+        //public int Sum()
+        //{
+        //    var headcopy = head;
+        //    int sum = 0;
+        //    while (headcopy != null)
+        //    {
+        //        sum += headcopy.InfField;
+        //        headcopy = headcopy.NextNode;
+        //    }
+        //    return sum;
+        //}
 
         /// <summary>
         /// Вставляет число m до и после первого элемента, равного k
         /// </summary>
-        public void PasteNumber(int k, int m)
-        {
-            var nodeCopy = head;
-            int i = 2;
-            while (nodeCopy.NextNode.InfField != k)
-            {
-                nodeCopy = nodeCopy.NextNode;
-                i++;
-            }
-            Add(m, i);
-            Add(m, i+2);
-        }
+        //public void PasteNumber(int k, int m)
+        //{
+        //    var nodeCopy = head;
+        //    int i = 2;
+        //    while (nodeCopy.NextNode.InfField != k)
+        //    {
+        //        nodeCopy = nodeCopy.NextNode;
+        //        i++;
+        //    }
+        //    Add(m, i);
+        //    Add(m, i+2);
+        //}
+
+        /// <summary>
+        /// Удаление числа
+        /// </summary>
+        //public void DeleteNumber(int k)
+        //{
+        //    var nodeCopy = head;
+        //    int i = 2;
+        //    while (nodeCopy.NextNode.InfField != k)
+        //    {
+        //        nodeCopy = nodeCopy.NextNode;
+        //        i++;
+        //    }
+        //    Delete(i);
+        //}
+        #endregion
 
         /// <summary>
         /// Дз по АСД
@@ -203,15 +249,10 @@ namespace CS2022.List
             head.NextNode = headcopy;
             while (thirdnode != null && thirdnode.NextNode != null)
             {
-
                 headcopy.NextNode = thirdnode.NextNode;
-
                 headcopy = thirdnode;
-
                 var next = thirdnode.NextNode.NextNode;
-
                 thirdnode.NextNode.NextNode = thirdnode;
-
                 thirdnode = next;
             }
             headcopy.NextNode = thirdnode;
@@ -243,7 +284,7 @@ namespace CS2022.List
             while (headCopy != null)
             {
                 result.Append(headCopy.InfField.ToString() + " ");
-                headCopy = (Node)headCopy.NextNode;
+                headCopy = (Node<T>)headCopy.NextNode;
             }
             return result.ToString();
         }
@@ -252,7 +293,5 @@ namespace CS2022.List
         {
             Console.WriteLine(ToString());
         }
-
-
     }
 }
