@@ -14,9 +14,17 @@ namespace CS2022.List
             {
                 var ll = new CustomLinkedList<int>();
                 ll.WriteToConsole();
+                ll.Add(1);
+                ll.WriteToConsole();
+                ll.AddRange(new int[] { 1, 2, 3, 4, 5, 6 });
+                ll.WriteToConsole();
+                ll.Reverse();
+                ll.WriteToConsole();
 
                 var ll2 = new CustomLinkedList<int>(
                     new int[] { 1, 2, 3, 4, 5, 6 });
+                ll2.WriteToConsole();
+                ll2.Add(1);
                 ll2.WriteToConsole();
                 ll2.RemoveAt(3);
                 ll2.WriteToConsole();
@@ -24,11 +32,6 @@ namespace CS2022.List
                 ll2.WriteToConsole();
                 ll2.RemoveAt(ll2.Size());
                 ll2.WriteToConsole();
-
-                foreach (var el in ll2)
-                {
-                    Console.WriteLine(el.ToString());
-                }
             }
             catch (Exception ex)
             {

@@ -67,17 +67,38 @@ namespace CS2022.List
 
         public void Add(T elem)
         {
-            throw new NotImplementedException();
+            if (head == null)
+            {
+                head = new LinkedNode<T>(elem);
+                return;
+            }
+            var headcopy = head; 
+            while (headcopy.NextNode != null)
+                headcopy = headcopy.NextNode;
+            var node = new LinkedNode<T>(elem);
+            node.PrevNode = headcopy;
+            headcopy.NextNode = node;
         }
 
         public void AddRange(T[] elems)
         {
-            throw new NotImplementedException();
+            if (elems == null && elems.Length == 0)
+                return;
+            var headcopy = head;
+            while (headcopy.NextNode != null)
+                headcopy = headcopy.NextNode;
+            for (int i = 0; i < elems.Length; i++)
+            {
+                var node = new LinkedNode<T>(elems[i]);
+                node.PrevNode = headcopy;
+                headcopy.NextNode = node;
+                headcopy = headcopy.NextNode;
+            }
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            head = null;
         }
 
         public bool Contains(T elem)
@@ -169,7 +190,16 @@ namespace CS2022.List
 
         public int Size()
         {
-            throw new NotImplementedException();
+            if (head == null)
+                return 0;
+            var headcopy = head;
+            int k = 1;
+            while (headcopy.NextNode != null)
+            {
+                k++;
+                headcopy = headcopy.NextNode;
+            }
+            return k;
         }
 
         IEnumerator IEnumerable.GetEnumerator()

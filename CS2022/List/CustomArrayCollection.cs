@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CS2022.List
 {
-    public class CustomArrayCollection<T> : ICustomCollection<T>
+    public class CustomArrayCollection<T> : ICustomCollection<T> where T : IEquatable<T>
     {
         private T[] array;
 
@@ -28,12 +28,17 @@ namespace CS2022.List
 
         public void Add(T elem)
         {
-            throw new NotImplementedException();
+            Array.Resize(ref array, array.Length + 1);
+            array[array.Length] = elem;
         }
 
         public void AddRange(T[] elems)
         {
-            throw new NotImplementedException();
+            if (array == null && array.Length == 0)
+                return;
+            Array.Resize(ref array, array.Length + elems.Length);
+            for (int i = 0; i < elems.Length; i++)
+                array[array.Length+i] = elems[i];
         }
 
         public void Clear()
@@ -73,7 +78,13 @@ namespace CS2022.List
 
         public void RemoveAll(T elem)
         {
-            throw new NotImplementedException();
+            while (array.Contains(elem))
+            {
+                for (int i = 0; i < array.Length; i++)
+                    if (array[i].Equals(elem))
+                        RemoveAt(i);
+                RemoveAll(elem);
+            }
         }
 
         public void RemoveAt(int index)
@@ -93,17 +104,39 @@ namespace CS2022.List
 
         public void Reverse()
         {
-            throw new NotImplementedException();
+            var arr = new T[array.Length];
+            for (int i = 0; i < arr.Length; i++)
+                arr[i] = array[arr.Length-i-1];
+            array = arr;
         }
 
         public int Size()
         {
-            throw new NotImplementedException();
+            return array.Length;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
             return array.GetEnumerator();
+        }
+        public override string ToString()
+        {
+            if (array[0] == null)
+                return "Список пуст";
+            var sb = new StringBuilder();
+            for(int i = 0; i < array.Length-1;i++)
+            {
+                sb.Append(array[i].ToString());
+                if (array[i+1] != null)
+                    sb.Append("<=>");
+            }
+            sb.Append(array[array.Length - 1].ToString());
+            return sb.ToString();
+        }
+
+        public void WriteToConsole()
+        {
+            Console.WriteLine(ToString());
         }
     }
 }
