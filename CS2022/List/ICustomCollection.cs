@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS2022.LinkedList
+namespace CS2022.List
 {
     /// <summary>
     /// Собственная коллекция
     /// </summary>
-    public interface ICustomCollection<T>
-    {
+    public interface ICustomCollection<T> : IEnumerable<T>
+    { 
         /// <summary>
         /// Размер коллекции
         /// </summary>

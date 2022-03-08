@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CS2022.List
+using CS2022.List;
 
-namespace CS2022.LinkedList
+namespace CS2022.List
 {
     /// <summary>
     /// Линейный список на основе двунаправленного списка
@@ -167,6 +168,16 @@ namespace CS2022.LinkedList
         }
 
         public int Size()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public IEnumerator<T> GetEnumerator()
         {
             throw new NotImplementedException();
         }

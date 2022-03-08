@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS2022.LinkedList
+namespace CS2022.List
 {
     public class CustomArrayCollection<T> : ICustomCollection<T>
     {
@@ -14,7 +15,7 @@ namespace CS2022.LinkedList
         {
             array = new T[0];
         }
-
+        
         public CustomArrayCollection(T el)
         {
             array = new T[1] { el };
@@ -43,6 +44,11 @@ namespace CS2022.LinkedList
         public bool Contains(T elem)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return (IEnumerator<T>)array.GetEnumerator();
         }
 
         public int IndexOf(T elem)
@@ -93,6 +99,11 @@ namespace CS2022.LinkedList
         public int Size()
         {
             throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return array.GetEnumerator();
         }
     }
 }

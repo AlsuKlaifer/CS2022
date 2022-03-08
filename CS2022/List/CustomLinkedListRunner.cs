@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS2022.LinkedList
+namespace CS2022.List
 {
     public class CustomLinkedListRunner
     {
@@ -24,6 +24,11 @@ namespace CS2022.LinkedList
                 ll2.WriteToConsole();
                 ll2.RemoveAt(ll2.Size());
                 ll2.WriteToConsole();
+
+                foreach (var el in ll2)
+                {
+                    Console.WriteLine(el.ToString());
+                }
             }
             catch (Exception ex)
             {

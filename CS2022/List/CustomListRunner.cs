@@ -37,18 +37,19 @@ namespace CS2022.List
                 list.WriteToConsole();
                 list.DeletePenult();
                 list.WriteToConsole();
-                list.DeleteNumber(0);
-                list.WriteToConsole();
                 list.Add(11);
                 list.WriteToConsole();
                 Console.WriteLine(list.Sum());
-                list.PasteNumber(11, 9);
-                list.WriteToConsole();
                 list.ChangeNodes();
                 list.WriteToConsole();
                 list.Add(5);
                 list.ChangeNodes();
                 list.WriteToConsole();
+
+                foreach (var el in list)
+                {
+                    Console.WriteLine(el.ToString());
+                }
             }
             catch (ArgumentOutOfRangeException ex)
             {

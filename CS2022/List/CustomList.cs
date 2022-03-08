@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CS2022.List
 {
-    public class CustomList<T> where T: IComparable<T>
+    public class CustomList<T> : ICustomCollection<T> where T : IComparable<T>
     {
         /// <summary>
         /// Ссылка на первый элемент связанного списка
@@ -292,6 +293,71 @@ namespace CS2022.List
         public void WriteToConsole()
         {
             Console.WriteLine(ToString());
+        }
+
+        public int Size()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool isEmpty()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(T elem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddRange(T[] elems)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(T elem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAll(T elem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAt(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reverse()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(int index, T elem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int IndexOf(T elem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new CustomListEnumerator<T>(head);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
