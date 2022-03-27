@@ -13,8 +13,45 @@ using AISD;
 //ArraySearch.MajoritySearch(a);
 
 //3 task
-ArraySearch.Task3(13, 21 , 25);
-ArraySearch.Task3(13, 21 , 26);
-ArraySearch.Task3(102, 2 , 14);
+//ArraySearch.Task3(13, 21 , 25);
+//ArraySearch.Task3(13, 21 , 26);
+//ArraySearch.Task3(102, 2 , 14);
 
 //Метод замены соседних узлов реализован в CS2022 CustomList
+
+
+
+Algorithms.Run();
+
+//Classroom[] classes =
+//	{
+//		new Classroom {Students = {"Pavel", "Ivan", "Petr"},},
+//		new Classroom {Students = {"Anna", "Ilya", "Vladimir"},},
+//		new Classroom {Students = {"Bulat", "Alex", "Galina"},}
+//	};
+
+//var allStudents = new List<string>();
+//foreach (var classroom in classes)
+//{
+//	foreach (var student in classroom.Students)
+//	{
+//		allStudents.Add(student);
+//	}
+//}
+//return allStudents.ToArray();
+
+//var allStudents = Ao.GetAllStudents(classes);
+//Array.Sort(allStudents);
+//Console.WriteLine(string.Join(" ", allStudents));
+
+//public class Classroom
+//{
+//	public List<string> Students = new List<string>();
+//}
+//public static class Ao
+//{
+//	public static string[] GetAllStudents(Classroom[] classes)
+//	{
+//		return classes.SelectMany(s => s.Students).ToArray();
+//	}
+//}
