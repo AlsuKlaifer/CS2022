@@ -68,7 +68,7 @@ namespace AISD
                 }
             }
 
-            Print(graph);
+            //Print(graph);
         }
         private static void Print(int[,] distance)
         {
@@ -110,7 +110,7 @@ namespace AISD
                     }
                 }
             }
-            Print(list, sz);
+            //Print(list, sz);
         }
         private static void Print(int[] distance, int sz)
         {

@@ -20,8 +20,8 @@ using AISD;
 //Метод замены соседних узлов реализован в CS2022 CustomList
 
 
-
-Algorithms.Run();
+var a = new Test();
+a.Run();
 
 //Classroom[] classes =
 //	{
