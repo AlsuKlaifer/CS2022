@@ -30,5 +30,27 @@ namespace CS2022.Tree
         {
             return ChildNodeList?.Any() ?? false;
         }
+
+        int maxvalue = Int32.MinValue;
+
+        public  void InfixMax(BinaryTreeNode<int> tree, ref int maxvalue)
+        {
+            if (tree == null) return;
+            if (tree.LeftChild != null)
+            {
+                if (tree.Value > maxvalue)
+                    maxvalue = tree.LeftChild.Value;
+                InfixMax(tree.LeftChild, ref maxvalue);
+            }
+            if (tree.Value > maxvalue)
+                maxvalue = tree.Value;
+            if (tree.RightChild != null)
+                InfixMax(tree.RightChild, ref maxvalue);
+        }
+        public void Run()
+        {
+            int maxvalue = Int32.MinValue;
+            InfixMax(head, ref maxvalue);
+        }
     }
 }

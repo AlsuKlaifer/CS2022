@@ -17,14 +17,14 @@ namespace AISD
 
         public static List<int> ReadFromFileToList()
         {
-            var path = @"C:\Users\79874\source\repos\AlsuKlaifer\CS2022\AISD\SemesterWork1\input.txt";
+            var path = @"C:\Users\Asus\source\repos\CS2022\AISD\SemesterWork1\input.txt";
             string str = File.ReadAllText(path);
             List<int> list = new List<int>(str.Split(' ', '\n', '\r').Where(x => x != "").Select(s => Int32.TryParse(s, out int n) ? n : (int)no_edge));
             return list;
         }
         public static int[,] ReadFromFileToArray()
         {
-            string[] lines = File.ReadAllLines(@"C:\Users\79874\source\repos\AlsuKlaifer\CS2022\AISD\SemesterWork1\input.txt");
+            string[] lines = File.ReadAllLines(@"C:\Users\Asus\source\repos\CS2022\AISD\SemesterWork1\input.txt");
             int[,] num = new int[lines.Length, lines[0].Split(' ').Length];
             for (int i = 0; i < lines.Length; i++)
             {
@@ -67,8 +67,7 @@ namespace AISD
                     }
                 }
             }
-
-            //Print(graph);
+            Print(graph);
         }
         private static void Print(int[,] distance)
         {
@@ -110,7 +109,7 @@ namespace AISD
                     }
                 }
             }
-            //Print(list, sz);
+            Print(list, sz);
         }
         private static void Print(int[] distance, int sz)
         {

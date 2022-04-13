@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using AISD;
+using AISD.Codeforses;
 //Homework 14.02.2022
 //int[][] a = AISD.ArrayTasks.ReadFromFile();
 //ArrayTasks.JoinAllArrays(a);
@@ -19,9 +20,6 @@ using AISD;
 
 //Метод замены соседних узлов реализован в CS2022 CustomList
 
-
-var a = new Test();
-a.Run();
 
 //Classroom[] classes =
 //	{
