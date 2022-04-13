@@ -90,15 +90,12 @@ namespace AISD
 
         public static void FloydWarshall(List<int> list1, int sz)
         {
+            var count = 0;
             var list = list1.ToArray();
             for (var k = 0; k < sz; ++k)
             {
                 for (var i = 0; i < sz; ++i)
                 {
-                    if (list[i * sz + k] == no_edge)
-                    {
-                        continue;
-                    }
                     for (var j = 0; j < sz; ++j)
                     {
                         var distance = list[i * sz + k] + list[k * sz + j];
@@ -106,6 +103,7 @@ namespace AISD
                         {
                             list[i * sz + j] = distance;
                         }
+                        count++;
                     }
                 }
             }

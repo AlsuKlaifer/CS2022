@@ -12,8 +12,9 @@ namespace AISD
         private const int no_edge = (int.MaxValue / 2) - 1;
         public int[,] GetArray()
         {
+            var a = 6400;
             var random = new Random();
-            var array = new int[800, 800];
+            var array = new int[a, a];
             var x = array.GetLength(0);
             for (int i = 0; i < x; i++)
                 for (int j = 0; j < x; j++)
@@ -24,18 +25,20 @@ namespace AISD
         }
         public List<int> GetList()
         {
+            int a = 1000;
+            int b = a * a;
             var random = new Random();
-            var array = new int[3200, 3200];
+            var array = new int[a, a];
             var x = array.GetLength(0);
             for (int i = 0; i < x; i++)
                 for (int j = 0; j < x; j++)
                     array[i, j] = random.Next(1, no_edge);
             for (int i = 0; i < x; i++)
                 array[i, i] = 0;
-            int[] m1 = new int[10240000];
+            int[] m1 = new int[b];
             int z = 0;
-            for (int i = 0; i < 3200; i++)
-                for (int j = 0; j < 3200; j++)
+            for (int i = 0; i < a; i++)
+                for (int j = 0; j < a; j++)
                 {
                     m1[z] = array[i, j];
                     z++;
@@ -65,7 +68,7 @@ namespace AISD
             var array = GetList();
             var sw = new Stopwatch();
             sw.Start();
-            Algorithms.FloydWarshall(array, 3200);
+            Algorithms.FloydWarshall(array, 1000);
             sw.Stop();
             Console.WriteLine(sw.ElapsedMilliseconds);       
         }
