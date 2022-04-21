@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CS2022.List;
 
-namespace CS2022.List
+namespace CS2022.Homework_21._03._2022
 {
     /// <summary>
     /// Элемент двунаправленного связного списка

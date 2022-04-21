@@ -3,19 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CS2022.Delegats;
 
 namespace CS2022.Tree
 {
     public class TreeRunner
     {
-        var n8 = new TreeNode<int>(8);
-        var n9 = new TreeNode<int>(9);
-        var n5 = new TreeNode<int>(5, new List<TreeNode<int>>() { n8, n9 });
-        var n6 = new TreeNode<int>(6);
-        var n7 = new TreeNode<int>(7);
-        var n2 = new TreeNode<int>(2, new List<TreeNode<int>>() { n5, n6 });
-        var n3 = new TreeNode<int>(3);
-        var n4 = new TreeNode<int>(4, new List<TreeNode<int>>() { n7 });
-        var n1 = new TreeNode<int>(1, new List<TreeNode<int>>() { n2, n3, n4 });
+        public void Run()
+        {
+            //var binary = new BinarySearchTree<int>();
+            //binary.Add(3, 3);
+            //binary.Add(1, 1);
+            //binary.Add(2, 2);
+            //binary.Add(6, 6);
+            //binary.Add(5, 5);
+
+            //binary.BreadthFirstSearch();
+
+            //for (int i = 0; i < 8; i++)
+            //{
+            //    binary.IsExternal(i);
+            //}
+
+            //binary.Remove(1);
+            //binary.BreadthFirstSearch();
+
+            var head = new BinaryTreeNode<string>("+", 1);
+            head.Left = new BinaryTreeNode<string>("2", 2);
+            head.Right = new BinaryTreeNode<string>("3", 3);
+            var extree = new ExpressionTree(head);
+            extree.Calc();
+            Console.WriteLine(head.Value);
+
+            var root = new BinaryTreeNode<int>(10, 10);
+            var avl = new AVLTree<int>(root);
+            avl.Add(5, 5);
+            avl.Add(15, 15);
+            avl.Add(1, 1);
+            avl.Add(11, 11);
+            avl.Add(18, 18);
+            avl.Add(16, 16);
+            avl.Add(23, 23);
+            avl.BreadthFirstSearch();
+            avl.Add(17, 17);
+            avl.BreadthFirstSearch();
+        }
     }
 }

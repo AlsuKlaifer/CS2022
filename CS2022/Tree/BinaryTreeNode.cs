@@ -17,10 +17,15 @@ namespace CS2022.Tree
         public BinaryTreeNode<T> Right;
         public BinaryTreeNode<T> Parent;
 
+        public BinaryTreeNode(int key)
+        {
+            Key = key;
+        }
         public BinaryTreeNode(T value, int key, BinaryTreeNode<T> parent = null)
         {
             Value = value;
             Key = key;
+            Parent = parent;
         }
 
         public BinaryTreeNode(T value, int key, BinaryTreeNode<T> left, BinaryTreeNode<T> right, BinaryTreeNode<T> parent = null)

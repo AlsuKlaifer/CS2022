@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CS2022.List;
 
-namespace CS2022.List
+namespace CS2022.Homework_21._03._2022
 {
     /// <summary>
     /// Линейный список на основе двунаправленного списка
@@ -204,12 +204,12 @@ namespace CS2022.List
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            return ((IEnumerable)this).GetEnumerator();
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new LinkedListEnumerator<T>(head);
         }
     }
 }

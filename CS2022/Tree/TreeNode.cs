@@ -10,14 +10,17 @@ namespace CS2022.Tree
     {
         public T Value;
         List<TreeNode<T>> childNodeList;
-        public List<TreeNode<T>> ChildNodeList { get => childNodeList;  }
+        public List<TreeNode<T>> ChildNodeList
+        {
+            get => childNodeList;
+        }
         public TreeNode(T value)
         {
-            Value = value;
+            this.Value = value;
         }
         public TreeNode(T value, List<TreeNode<T>> children)
         {
-            Value = value;
+            this.Value = value;
             childNodeList = children;
         }
         public void AddChild(T value)
@@ -33,24 +36,24 @@ namespace CS2022.Tree
 
         int maxvalue = Int32.MinValue;
 
-        public  void InfixMax(BinaryTreeNode<int> tree, ref int maxvalue)
-        {
-            if (tree == null) return;
-            if (tree.LeftChild != null)
-            {
-                if (tree.Value > maxvalue)
-                    maxvalue = tree.LeftChild.Value;
-                InfixMax(tree.LeftChild, ref maxvalue);
-            }
-            if (tree.Value > maxvalue)
-                maxvalue = tree.Value;
-            if (tree.RightChild != null)
-                InfixMax(tree.RightChild, ref maxvalue);
-        }
-        public void Run()
-        {
-            int maxvalue = Int32.MinValue;
-            InfixMax(head, ref maxvalue);
-        }
+        //public  void InfixMax(BinaryTreeNode<int> tree, ref int maxvalue)
+        //{
+        //    if (tree == null) return;
+        //    if (tree.LeftChild != null)
+        //    {
+        //        if (tree.Value > maxvalue)
+        //            maxvalue = tree.LeftChild.Value;
+        //        InfixMax(tree.LeftChild, ref maxvalue);
+        //    }
+        //    if (tree.Value > maxvalue)
+        //        maxvalue = tree.Value;
+        //    if (tree.RightChild != null)
+        //        InfixMax(tree.RightChild, ref maxvalue);
+        //}
+        //public void Run()
+        //{
+        //    int maxvalue = Int32.MinValue;
+        //    InfixMax(head, ref maxvalue);
+        //}
     }
 }

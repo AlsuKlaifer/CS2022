@@ -8,14 +8,15 @@ namespace CS2022.Tree
 {
     public class BinarySearchTree<T>
     {
-        public BinaryTreeNode<T> root;
-        private bool isFind = false;
+        private BinaryTreeNode<T> root;
         public void Add(int key, T value)
         {
-            if (root == null) root = new BinaryTreeNode<T>(value, 1);
+            if (root == null)
+                root = new BinaryTreeNode<T>(value, key);
             else
             {
                 var rootCopy = root;
+                bool isFind = false;
                 while (isFind == false)
                 {
                     if (key == rootCopy.Key)
@@ -23,7 +24,7 @@ namespace CS2022.Tree
                         rootCopy.Value = value;
                         isFind = true;
                     }
-                    else if (key > rootCopy.Key)
+                    else if (key < rootCopy.Key)
                     {
                         if (rootCopy.Left == null)
                         {
@@ -45,10 +46,9 @@ namespace CS2022.Tree
                 }
             }
         }
-
         public void BreadthFirstSearch()
         {
-            List<BinaryTreeNode<int>> toVisit = new List<BinaryTreeNode<int>>();
+            List<BinaryTreeNode<T>> toVisit = new List<BinaryTreeNode<T>>();
             toVisit.Add(root);
             while (toVisit.Any())
             {
@@ -56,7 +56,7 @@ namespace CS2022.Tree
                 if (current.Right != null) toVisit.Add(current.Right);
                 if (current.Left != null) toVisit.Add(current.Left);
                 toVisit.RemoveAt(0);
-                Console.WriteLine($"Ключ: {current.Key} ");
+                Console.WriteLine($"Ключ: {current.Key}");
             }
         }
 
@@ -68,12 +68,13 @@ namespace CS2022.Tree
         public void PrefixSum(BinaryTreeNode<int> tree, ref int sum)
         {
             if (tree == null)
-                //sum += root.Value;
+                return;
+            //sum += root.Value;
             else
-                    {
-                        if (tree.Left != null) PrefixSum(tree.Left, ref sum);
-                        if (tree.Right != null) PrefixSum(tree.Right, ref sum);
-                    }
+            {
+                if (tree.Left != null) PrefixSum(tree.Left, ref sum);
+                if (tree.Right != null) PrefixSum(tree.Right, ref sum);
+            }
 
         }
         /// <summary>
@@ -217,6 +218,46 @@ namespace CS2022.Tree
             }
             else
                 return false;
+        }
+        /// <summary>
+        /// проверяет, является ли p позицией листа дерева.
+        /// </summary>
+        public bool IsExternal(int p)
+        {
+            if (p < 1)
+            {
+                Console.WriteLine("Введите корректную позицию. Позиция начинается с 1.");
+                return false;
+            }
+            if (root == null)
+                return false;
+            List<int> steps = new List<int>();
+            while (p != 1)
+            {
+                steps.Add(p);
+                p /= 2;
+            }
+            steps.Reverse();
+            var node = root;
+            foreach (int step in steps)
+            {
+                if (step % 2 == 0)
+                    node = node.Left;
+                else
+                    node = node.Right;
+                if (node == null)
+                {
+                    Console.WriteLine("В дереве не существует элемента на данной позиции");
+                    return false;
+                }
+            }
+            if (node.Left != null || node.Right != null)
+            {
+                Console.WriteLine($"Узел с ключом {node.Key} не является листом дерева");
+                return false;
+            }
+            Console.WriteLine($"Узел с ключом {node.Key} является листом дерева");
+            return true;
         }
     }
 }
