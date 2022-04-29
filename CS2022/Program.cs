@@ -6,6 +6,7 @@ using CS2022.LINQ;
 using CS2022.Delegats;
 using CS2022.Homework_21._03._2022;
 using CS2022.Tree;
+using CS2022.Reflection;
 
 //var runner = new CustomArrayCollectionRunner();
 //runner.Run();
@@ -16,7 +17,13 @@ using CS2022.Tree;
 //var runner3 = new LinkTaskRunner();
 //runner3.Run();
 
-var runner = new TreeRunner();
+//var runner = new TreeRunner();
+//runner.Run();
+
+//var runner = new ReflectionRunner();
+//runner.Run();
+
+var runner = new CListRunner();
 runner.Run();
 
 //var a = new CustomLinkedList<int>();

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS2022.Worker_Event.Event_Example
+namespace CS2022.Reflection
 {
-    internal class GoVacationEventArgs
+    public class ClassForReflection
     {
+
     }
 }

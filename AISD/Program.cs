@@ -2,6 +2,7 @@
 using AISD;
 using AISD.Codeforses;
 using AISD.Homework_21._04._2022;
+using AISD.Karatsuba;
 //Homework 14.02.2022
 //int[][] a = AISD.ArrayTasks.ReadFromFile();
 //ArrayTasks.JoinAllArrays(a);
@@ -21,6 +22,9 @@ using AISD.Homework_21._04._2022;
 
 var runner = new ArraySearchMax();
 runner.Run();
+
+var a = new Mult();
+a.Run();
 
 //Classroom[] classes =
 //	{

@@ -19,7 +19,7 @@ namespace CS2022.List
         {
             head = new Node<T>(a);
         }
-        
+
         public CustomList(T[] array)
         {
             foreach (var el in array)
@@ -35,7 +35,7 @@ namespace CS2022.List
         {
             var newNode = new Node<T>(a);
 
-            if(head == null)
+            if (head == null)
             {
                 head = newNode;
                 return;
@@ -64,14 +64,14 @@ namespace CS2022.List
         /// </summary>
         public void Add(T a, int position)
         {
-            if (position==1)
+            if (position == 1)
             {
                 AddToHead(a);
                 return;
             }
 
             var headCopy = head;
-            for (int i =1; i<=position - 2; i++)
+            for (int i = 1; i <= position - 2; i++)
             {
                 if (headCopy == null)
                     throw new ArgumentOutOfRangeException("Список недостаточной длины");
@@ -90,11 +90,16 @@ namespace CS2022.List
         /// </summary>
         public void DeleteHead()
         {
-            if (head.NextNode == null)
+            if (head == null)
             {
                 Console.WriteLine("Список пуст");
                 return;
-            } 
+            }
+            if (head.NextNode == null)
+            {
+                Console.WriteLine("Удален единственный элемент в списке. Список пуст");
+                return;
+            }
             head = head.NextNode;
         }
 
@@ -103,13 +108,18 @@ namespace CS2022.List
         /// </summary>
         public void DeleteLast()
         {
-            if (head.NextNode == null)
+            if (head == null)
             {
                 Console.WriteLine("Список пуст");
                 return;
             }
+            if (head.NextNode == null)
+            {
+                Console.WriteLine("Удален единственный элемент в списке. Список пуст");
+                return;
+            }
             var nodeCopy = head;
-            while(nodeCopy.NextNode.NextNode != null)
+            while (nodeCopy.NextNode.NextNode != null)
             {
                 nodeCopy = nodeCopy.NextNode;
             }
@@ -123,6 +133,13 @@ namespace CS2022.List
         {
             if (position <= 0)
                 throw new Exception("Позиция предусматривает положительное число. Введите корректное значение");
+            if (position > Length())
+                throw new Exception("Элемента на данной позиции не существует. Введите корректное значение");
+            if (position == Length())
+            {
+                DeleteLast();
+                return;
+            }
             if (position == 1)
             {
                 DeleteHead();
@@ -134,7 +151,7 @@ namespace CS2022.List
                 nodeCopy = nodeCopy.NextNode;
             }
             nodeCopy.NextNode = nodeCopy.NextNode.NextNode;
-        } 
+        }
 
         /// <summary>
         /// Удаление предпоследнего элемента
@@ -189,54 +206,6 @@ namespace CS2022.List
 
             headCopy.NextNode = headCopy.NextNode.NextNode;
         }
-        #region Не работает для обобщенных типов
-
-        /// <summary>
-        /// Возвращает сумму элементов списка
-        /// </summary>
-        //public int Sum()
-        //{
-        //    var headcopy = head;
-        //    int sum = 0;
-        //    while (headcopy != null)
-        //    {
-        //        sum += headcopy.InfField;
-        //        headcopy = headcopy.NextNode;
-        //    }
-        //    return sum;
-        //}
-
-        /// <summary>
-        /// Вставляет число m до и после первого элемента, равного k
-        /// </summary>
-        //public void PasteNumber(int k, int m)
-        //{
-        //    var nodeCopy = head;
-        //    int i = 2;
-        //    while (nodeCopy.NextNode.InfField != k)
-        //    {
-        //        nodeCopy = nodeCopy.NextNode;
-        //        i++;
-        //    }
-        //    Add(m, i);
-        //    Add(m, i+2);
-        //}
-
-        /// <summary>
-        /// Удаление числа
-        /// </summary>
-        //public void DeleteNumber(int k)
-        //{
-        //    var nodeCopy = head;
-        //    int i = 2;
-        //    while (nodeCopy.NextNode.InfField != k)
-        //    {
-        //        nodeCopy = nodeCopy.NextNode;
-        //        i++;
-        //    }
-        //    Delete(i);
-        //}
-        #endregion
 
         /// <summary>
         /// Дз по АСД
