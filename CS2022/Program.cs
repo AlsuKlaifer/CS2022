@@ -23,8 +23,11 @@ using CS2022.Reflection;
 //var runner = new ReflectionRunner();
 //runner.Run();
 
-var runner = new CListRunner();
-runner.Run();
+//var runner = new CListRunner();
+//runner.Run();
+
+var runner = new CustomArrayCollectionRunner();
+runner.Run2();
 
 //var a = new CustomLinkedList<int>();
 //a.Add(1);

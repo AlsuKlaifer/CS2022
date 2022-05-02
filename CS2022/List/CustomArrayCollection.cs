@@ -29,7 +29,7 @@ namespace CS2022.List
         public void Add(T elem)
         {
             Array.Resize(ref array, array.Length + 1);
-            array[array.Length] = elem;
+            array[array.Length - 1] = elem;
         }
 
         public void AddRange(T[] elems)
@@ -37,8 +37,8 @@ namespace CS2022.List
             if (array == null && array.Length == 0)
                 return;
             Array.Resize(ref array, array.Length + elems.Length);
-            for (int i = 0; i < elems.Length; i++)
-                array[array.Length+i] = elems[i];
+            for (int i = elems.Length; i > 0; i--)
+                array[array.Length - i] = elems[elems.Length - i];
         }
 
         public void Clear()

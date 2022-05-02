@@ -8,7 +8,7 @@ namespace CS2022.List
 {
     public class CustomArrayCollectionRunner
     {
-        public void Run()
+        public void Run1()
         {
             try
             {
@@ -24,6 +24,15 @@ namespace CS2022.List
                 Console.WriteLine(ex.Message +
                     Environment.NewLine + ex.StackTrace);
             }
+        }
+        public void Run2()
+        {
+            var arr1 = new CustomArrayCollection<int>(new[] { 1, 2 });
+            arr1.Add(3);
+            arr1.AddRange(new int[] { 4, 5 });
+
+            var arr2 = new CustomArrayCollection<int>();
+            arr2.Add(1);
         }
     }
 }
