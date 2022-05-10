@@ -3,6 +3,7 @@ using AISD;
 using AISD.Codeforses;
 using AISD.Homework_21._04._2022;
 using AISD.Karatsuba;
+using AISD.SemesterWork2;
 //Homework 14.02.2022
 //int[][] a = AISD.ArrayTasks.ReadFromFile();
 //ArrayTasks.JoinAllArrays(a);
@@ -20,11 +21,14 @@ using AISD.Karatsuba;
 //ArraySearch.Task3(13, 21 , 26);
 //ArraySearch.Task3(102, 2 , 14);
 
-var runner = new ArraySearchMax();
+var runner = new IntHAT();
 runner.Run();
 
-var a = new Mult();
-a.Run();
+//var runner = new ArraySearchMax();
+//runner.Run();
+
+//var a = new Mult();
+//a.Run();
 
 //Classroom[] classes =
 //	{

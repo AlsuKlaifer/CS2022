@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS2022", "CS2022\CS2022.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AISD", "AISD\AISD.csproj", "{E7A5BD01-3D8C-43D9-9833-F170B4BE1BDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeTest", "TreeTest\TreeTest.csproj", "{E8E79B39-A5D4-4F81-B8F9-FA7C3AE0B69B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "TreeTest\Test.csproj", "{E8E79B39-A5D4-4F81-B8F9-FA7C3AE0B69B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

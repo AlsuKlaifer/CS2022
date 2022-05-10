@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AISD\AISD.csproj" />
     <ProjectReference Include="..\CS2022\CS2022.csproj" />
   </ItemGroup>
 
