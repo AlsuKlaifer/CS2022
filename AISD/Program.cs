@@ -21,8 +21,12 @@ using AISD.SemesterWork2;
 //ArraySearch.Task3(13, 21 , 26);
 //ArraySearch.Task3(102, 2 , 14);
 
-var runner = new IntHAT();
-runner.Run();
+var kar = new Mult();
+int a = kar.Calc(123, 456789);
+Console.WriteLine(a);
+
+//var runner = new IntHAT();
+//runner.Run();
 
 //var runner = new ArraySearchMax();
 //runner.Run();

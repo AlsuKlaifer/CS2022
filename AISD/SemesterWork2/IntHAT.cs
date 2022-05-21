@@ -32,13 +32,17 @@ namespace AISD.SemesterWork2
         }
         public void Run()
         {
+            var hat1 = new IntHAT();
+            hat1.FillHAT(1, 13);
+            hat1.WriteToConsole();
+            Console.WriteLine();
+
             var hat = new IntHAT();
             hat.FillHAT(1, 4);
             hat.StopWatch(3);
 
             hat.FillHAT(5, 16);
             hat.StopWatch(10);
-            hat.WriteToConsole();
 
             hat.FillHAT(17, 64);
             hat.StopWatch(32);

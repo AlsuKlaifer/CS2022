@@ -91,6 +91,12 @@ namespace CS2022.List
                 Console.WriteLine("Список пуст");
                 return;
             }
+            if (head.InfField == k)
+            {
+                AddToHead(m);
+                Add(m, 3);
+                return;
+            }
             var nodeCopy = head;
             var length = Length();
             int i = 2;
@@ -159,9 +165,10 @@ namespace CS2022.List
         {
             if (position <= 0)
                 throw new Exception("Позиция предусматривает положительное число. Введите корректное значение");
-            if (position > Length())
+            int length = Length();
+            if (position > length)
                 throw new Exception("Элемента на данной позиции не существует. Введите корректное значение");
-            if (position == Length())
+            if (position == length)
             {
                 DeleteLast();
                 return;
@@ -208,6 +215,7 @@ namespace CS2022.List
             }
             if (head.NextNode == null)
             {
+                DeleteHead();
                 Console.WriteLine("Удален единственный элемент в списке. Список пуст");
                 return;
             }
@@ -218,6 +226,21 @@ namespace CS2022.List
             }
             nodeCopy.NextNode = null;
         }
+        public override string ToString()
+        {
+            var headCopy = head;
+            StringBuilder result = new StringBuilder();
+            if (head == null)
+            {
+                return "Список пуст";
+            }
+            while (headCopy != null)
+            {
+                result.Append(headCopy.InfField.ToString() + " ");
+                headCopy = headCopy.NextNode;
+            }
+            return result.ToString();
+        }
     }
     public class CListRunner
     {
@@ -227,6 +250,13 @@ namespace CS2022.List
             a.PasteNumber(2, 5);
             var b = new CList(new int[] { 1, 2, 3, 4, 5 });
             b.PasteNumber(2, 5);
+            Console.WriteLine(b.ToString());
+            var c = new CList(new int[] { 1, 2, 3, });
+            c.PasteNumber(1, 5);
+            Console.WriteLine(c.ToString());
+            var d = new CList(new int[] { 1 });
+            d.PasteNumber(1, 5);
+            Console.WriteLine(d.ToString());
         }
     }
 }

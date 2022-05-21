@@ -115,6 +115,7 @@ namespace CS2022.List
             }
             if (head.NextNode == null)
             {
+                DeleteHead();
                 Console.WriteLine("Удален единственный элемент в списке. Список пуст");
                 return;
             }
@@ -133,9 +134,10 @@ namespace CS2022.List
         {
             if (position <= 0)
                 throw new Exception("Позиция предусматривает положительное число. Введите корректное значение");
-            if (position > Length())
+            int length = Length();
+            if (position > length)
                 throw new Exception("Элемента на данной позиции не существует. Введите корректное значение");
-            if (position == Length())
+            if (position == length)
             {
                 DeleteLast();
                 return;

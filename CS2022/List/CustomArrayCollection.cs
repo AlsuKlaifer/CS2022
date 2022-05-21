@@ -34,8 +34,14 @@ namespace CS2022.List
 
         public void AddRange(T[] elems)
         {
-            if (array == null && array.Length == 0)
+            if (elems == null && elems.Length == 0)
                 return;
+            if (array == null && array.Length == 0)
+            {
+                foreach (T elem in elems)
+                    Add(elem);
+                return;
+            }
             Array.Resize(ref array, array.Length + elems.Length);
             for (int i = elems.Length; i > 0; i--)
                 array[array.Length - i] = elems[elems.Length - i];
