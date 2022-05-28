@@ -215,6 +215,8 @@ namespace CS2022.List
         /// </summary>
         public void ChangeNodes()
         {
+            if (head == null) throw new Exception("There is no node in list");
+            if (head.NextNode == null) return;
             var thirdnode = head.NextNode.NextNode;
             var headcopy = head;
             head = head.NextNode;
@@ -228,6 +230,26 @@ namespace CS2022.List
                 thirdnode = next;
             }
             headcopy.NextNode = thirdnode;
+        }
+        public void Run()
+        {
+            var list = new CustomList<int>();
+            list.Add(1);
+            list.ChangeNodes();
+            list.WriteToConsole();
+            list.Add(2);
+            list.ChangeNodes();
+            list.WriteToConsole();
+
+            var list2 = new CustomList<int>();
+            list2.Add(1);
+            list2.Add(2);
+            list2.Add(3);
+            list2.ChangeNodes(); // 2 1 3
+            list2.WriteToConsole();
+            list2.Add(4);
+            list2.ChangeNodes(); // 1 2 4 3
+            list2.WriteToConsole();
         }
 
         public int Length()
